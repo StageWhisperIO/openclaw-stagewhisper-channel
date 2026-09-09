@@ -1,0 +1,43 @@
+{
+  "packageManager": "pnpm@10.32.1",
+  "name": "@stagewhisper/stagewhisper",
+  "version": "0.65.0",
+  "type": "module",
+  "description": "OpenClaw channel plugin that connects StageWhisper live calls to your AI assistant",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "openclaw.plugin.json",
+    "skills",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node ./scripts/build.mjs",
+    "prepack": "pnpm build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "openclaw": {
+    "extensions": [
+      "./dist/index.js"
+    ],
+    "channel": {
+      "id": "stagewhisper",
+      "label": "StageWhisper",
+      "blurb": "Turn live call moments into assistant tasks"
+    }
+  },
+  "devDependencies": {
+    "@noble/ciphers": "^1.3.0",
+    "@noble/curves": "^1.8.0",
+    "@noble/hashes": "^1.7.0",
+    "esbuild": "^0.27.2",
+    "openclaw": "2026.3.23",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  },
+  "dependencies": {
+    "undici": "^7.24.5"
+  }
+}

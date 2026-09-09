@@ -1,0 +1,11 @@
+name: "openclaw-stagewhisper-channel CodeQL config"
+
+queries:
+  - uses: security-and-quality
+
+paths-ignore:
+  - "**/node_modules/**"
+  - "**/dist/**"
+  - "**/build/**"
+  - "**/.turbo/**"
+  - "**/coverage/**"

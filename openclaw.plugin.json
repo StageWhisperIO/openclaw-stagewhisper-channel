@@ -1,0 +1,45 @@
+{
+  "id": "stagewhisper",
+  "name": "StageWhisper",
+  "description": "Turn live call moments into assistant tasks via StageWhisper",
+  "version": "0.65.0",
+  "channels": [
+    "stagewhisper"
+  ],
+  "skills": [
+    "skills/stagewhisper-assistant"
+  ],
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "label": {
+        "type": "string",
+        "description": "Human-readable label for this connection",
+        "default": "OpenClaw"
+      },
+      "httpHost": {
+        "type": "string",
+        "description": "Bind host for the HTTP transport listener (loopback only by default).",
+        "default": "127.0.0.1"
+      },
+      "httpPort": {
+        "type": "integer",
+        "description": "Port for the HTTP transport listener.",
+        "default": 8765
+      },
+      "httpToken": {
+        "type": "string",
+        "description": "Bearer token required on inbound HTTP transport requests (>=16 chars). The listener accepts POSTs from your StageWhisper client at POST /v1/incoming with reasons transcript_chunk, chat_message, system_prelude; transcript_chunk dispatches only when is_final=true and replies sync 200, chat_message acks 202 and delivers the reply via POST {callback.url}/tasks/{task_id} on the per-request loopback base URL.",
+        "default": ""
+      }
+    },
+    "required": []
+  },
+  "uiHints": {
+    "httpToken": {
+      "label": "HTTP transport token",
+      "sensitive": true
+    }
+  }
+}
